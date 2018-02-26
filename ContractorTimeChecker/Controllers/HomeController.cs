@@ -26,5 +26,6 @@ namespace ContractorTimeChecker.Controllers
 
             return View();
         }
+
     }
 }
