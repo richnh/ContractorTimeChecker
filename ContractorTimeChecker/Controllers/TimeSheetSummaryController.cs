@@ -1,21 +1,29 @@
 ﻿using System;
 using System.Web.Mvc;
 using ContractorTimeChecker.Models;
+using ContractorTimeChecker.DAL;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace ContractorTimeChecker.Controllers
 {
+    [Authorize]
     public class TimeSheetSummaryController : Controller
     {
+        private TimesheetContext context = new TimesheetContext();
+
         // GET: TimeSheet
         public ActionResult Index()
         {
-            return View();
-        }
+            TimesheetSummaryModel model = new TimesheetSummaryModel();
 
-        [HttpPost]
-        public ActionResult Create(TimeSheetEntryModel model)
-        {
-            return View();
+            model.CandidateNamesVM = new Models.ViewModels.CandidateNameViewModel()
+            {
+                CandidateNames = GetCandidateNames()
+
+            };
+
+            return View(model);
         }
 
         // GET: TimeSheet/Details/5
@@ -24,23 +32,23 @@ namespace ContractorTimeChecker.Controllers
             return View();
         }
 
-               
 
-        // POST: TimeSheet/Create
-        //[HttpPost]
-        //public ActionResult Create(FormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add insert logic here
+        [HttpPost]
+        public ActionResult Create(TimesheetSummaryModel model)
+        {
+            try
+            {
+                // TODO: Add insert logic here
 
-        //        return RedirectToAction("Index");
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
+                List<TimeSheetEntryModel> models = context.Timesheets.Where(x => x.Date >= model.PlacementStartDate).Where(x => x.Date <= model.PlacementEndDate).ToList();
+
+                return RedirectToAction("Index");
+            }
+            catch
+            {
+                return View();
+            }
+        }
 
         // GET: TimeSheet/Edit/5
         public ActionResult Edit(int id)
@@ -84,6 +92,20 @@ namespace ContractorTimeChecker.Controllers
             {
                 return View();
             }
+        }
+
+        IEnumerable<SelectListItem> GetCandidateNames()
+        {
+            IList<SelectListItem> list = new List<SelectListItem>();
+
+            List<TimeSheetEntryModel> timesheetEntries = context.Timesheets.ToList();
+
+            foreach(var entry in timesheetEntries)
+            {
+                list.Add( new SelectListItem() { Value = entry.Id.ToString(), Text = entry.CandidateName } );
+            }
+
+            return list;
         }
     }
 }

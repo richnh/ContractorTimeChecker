@@ -2,23 +2,30 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
+<div class="text-center">
+    <br />
+    <img id="header_image" src="~/Content/Images/clock.jpg" alt="Sample Photo" height="180px" />
     <h1>Contractor Time Checker</h1>
     <p class="lead">Generate timesheets for contractors</p>
 </div>
 
-<div class="row">
+<div class="text-center">
+    <div class="col-md-4">
+        <h3>View all Info</h3>
+        <p>
+            @Html.ActionLink("View all info", "Index", "TimeSheetEntry")
+        </p>
+    </div>
     <div class="col-md-4">
         <h3>Generate timesheet summary information</h3>
         <p>
             @Html.ActionLink("Generate Timesheet Summary", "Index", "TimeSheetSummary")
-        </p>
-       
+        </p>    
     </div>
     <div class="col-md-4">
         <h3>Enter contractor timesheet information</h3>
         <p>
-            @Html.ActionLink("Enter new Timesheet Entry", "Index", "TimeSheetEntry")
+            @Html.ActionLink("Enter new Timesheet Entry", "Create", "TimeSheetEntry")
         </p>
     </div>
 </div>

@@ -1,21 +1,30 @@
-﻿
+﻿@model ContractorTimeChecker.Models.TimesheetSummaryModel
+
 @{
     ViewBag.Title = "TimeSheet Summary Generator";
 }
 
-<h2>TimeSheet Summary Generator</h2>
+<div class="row">
+    <h2>TimeSheet Summary Generator</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            Enter the information for the Contractor
+            employee summary.
+        </div>
+    </div>
+</div>
 
-@using (Html.BeginForm("Create", "TimeSheetSummary", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    <hr />
-            <div class="form-group">
-                <div class="col-md-10">
-                    @Html.Label("Candidate Name")
-                </div>
-                <div class="col-md-10">
-                    @Html.TextBox("CandidateName")
-                </div>
+    @using (Html.BeginForm("Create", "TimeSheetSummary", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+    {
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.Label("Candidate Name")
             </div>
+            <div class="col-md-10">
+          
+                @Html.DropDownListFor(m => m.CandidateNamesVM.SelectedCandidateNameId, Model.CandidateNamesVM.CandidateNames)          
+            </div>
+        </div>
             <div class="form-group">
                 <div class="col-md-10">
                     @Html.Label("Client Name")
@@ -61,4 +70,4 @@
                     <input type="submit" class="btn btn-default" value="Generate Timesheet" />
                 </div>
             </div>
-}
+    }

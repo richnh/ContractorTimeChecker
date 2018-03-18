@@ -1,56 +1,63 @@
-﻿
+﻿@model IEnumerable<ContractorTimeChecker.Models.TimeSheetEntryModel>
+
 @{
-    ViewBag.Title = "TimeSheet Entry";
+    ViewBag.Title = "TimeSheet Information";
 }
 
-<h2>Add TimeSheet Entry</h2>
+<div class="row">
+    <h2>View Timesheet Information</h2>
+    <div class="panel panel-default">
+        <div class="panel-body">View all contractor information</div>
+    </div>
+</div>
 
-@using (Html.BeginForm("Create", "TimeSheetEntry", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
-{
-    <hr />
-            <div class="form-group">
-                <div class="col-md-10">
-                    @Html.Label("Candidate Name")
-                </div>
-                <div class="col-md-10">
-                    @Html.TextBox("CandidateName")
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    @Html.Label("Client Name")
-                </div>
-                <div class="col-md-10">
-                    @Html.TextBox("ClientName")
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    @Html.Label("Job Title")
-                </div>
-                <div class="col-md-10">
-                    @Html.TextBox("JobTitle")
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    @Html.Label("Duration")
-                </div>
-                <div class="col-md-10">
-                    @Html.TextBox("Duration")
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    @Html.Label("Placement Type")
-                </div>
-                <div class="col-md-10">
-                    @Html.TextBox("PlacementType")
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="col-md-10">
-                    <input type="submit" class="btn btn-default" value="Submit" />
-                </div>
-            </div>
-}
+    <table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            Candidate Name
+        </th>
+        <th>
+            Client Name
+        </th>
+        <th>
+            Job Title
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Duration
+        </th>
+        <th>
+            Placement Type
+        </th>
+    </tr>
+        @foreach (var item in @Model)
+        {
+            <tr>
+                <td>
+                    @Html.Encode(item.CandidateName)
+                </td>
+
+                <td>
+                    @Html.Encode(item.ClientName)
+                </td>
+
+                <td>
+                    @Html.Encode(item.JobTitle)
+                </td>
+
+                <td>
+                    @Html.Encode(item.Date)
+                </td>
+
+                <td>
+                    @Html.Encode(item.Duration)
+                </td>
+
+                <td>
+                    @if(item.PlacementType != null) { @Html.Encode((ContractorTimeChecker.Models.Enums.PlacementTypeEnum)item.PlacementType) }            
+                </td>
+            </tr>
+        }        
+</table> 

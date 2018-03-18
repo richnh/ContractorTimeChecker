@@ -1,5 +1,8 @@
 ﻿using System;
 using ContractorTimeChecker.Models.Enums;
+using System.Collections.Generic;
+using System.Web.Mvc;
+using ContractorTimeChecker.Models.ViewModels;
 
 namespace ContractorTimeChecker.Models
 {
@@ -7,9 +10,9 @@ namespace ContractorTimeChecker.Models
     {
         public int Id;
 
-        public string CandidateName { get; set; }
+        public IEnumerable<string> CandidateName { get; set; }
 
-        public string ClientName { get; set; }
+        public List<string> ClientName { get; set; }
 
         public string JobTitle { get; set; }
 
@@ -18,5 +21,7 @@ namespace ContractorTimeChecker.Models
         public DateTime PlacementEndDate{ get; set; }
 
         public PlacementTypeEnum PlacementType { get; set; }
+
+        public CandidateNameViewModel CandidateNamesVM { get; set; }
     }
 }

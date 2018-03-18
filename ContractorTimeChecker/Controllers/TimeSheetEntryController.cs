@@ -8,12 +8,17 @@ using ContractorTimeChecker.DAL;
 
 namespace ContractorTimeChecker.Controllers
 {
+    [Authorize]
     public class TimeSheetEntryController : Controller
     {
+        private TimesheetContext context = new TimesheetContext();
+
         // GET: TimeSheetEntry
         public ActionResult Index()
         {
-            return View();
+            List<TimeSheetEntryModel> modelInfo = new List<TimeSheetEntryModel>();
+
+            return View(context.Timesheets.ToList());
         }
 
         // GET: TimeSheetEntry/Details/5
@@ -28,16 +33,11 @@ namespace ContractorTimeChecker.Controllers
             return View();
         }
 
-        // POST: TimeSheetEntry/Create
         [HttpPost]
         public ActionResult Create(TimeSheetEntryModel model)
         {
             try
             {
-                TimesheetContext context = new TimesheetContext();
-
-                // TODO: Add insert logic here
-                //TimeSheetEntryModel model = new TimeSheetEntryModel() { CandidateName = model.CandidateName, ClientName = model.ClientName };
                 context.Timesheets.Add(model);
 
                 context.SaveChanges();
