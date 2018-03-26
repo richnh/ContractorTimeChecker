@@ -5,8 +5,8 @@ namespace ContractorTimeChecker.Models
 {
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("TimeSheetEntry")]   
-    public partial class TimeSheetEntryModel
+    [Table("TimeSheetEntryBase")]   
+    public partial class TimeSheetEntryModelBase
     {
         public int Id { get; set; }
 
@@ -16,10 +16,10 @@ namespace ContractorTimeChecker.Models
 
         public string JobTitle { get; set; }
 
-        public double? Duration { get; set; }
+        public double ? Duration { get; set; }
 
         public DateTime Date { get; set; }
 
-        public int? PlacementType { get; set; }
+        public int ? PlacementType { get; set; }
     }
 }

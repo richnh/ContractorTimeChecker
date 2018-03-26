@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using ContractorTimeChecker.Models;
 using ContractorTimeChecker.DAL;
@@ -16,7 +15,7 @@ namespace ContractorTimeChecker.Controllers
         // GET: TimeSheetEntry
         public ActionResult Index()
         {
-            List<TimeSheetEntryModel> modelInfo = new List<TimeSheetEntryModel>();
+            List<TimeSheetEntryModelBase> modelInfo = new List<TimeSheetEntryModelBase>();
 
             return View(context.Timesheets.ToList());
         }
@@ -34,7 +33,7 @@ namespace ContractorTimeChecker.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(TimeSheetEntryModel model)
+        public ActionResult Create(TimeSheetEntryModelBase model)
         {
             try
             {
@@ -50,14 +49,7 @@ namespace ContractorTimeChecker.Controllers
             }
         }
 
-        // GET: TimeSheetEntry/Edit/5
-        public ActionResult Edit(int id)
-        {
-            return View();
-        }
-
-        // POST: TimeSheetEntry/Edit/5
-        [HttpPost]
+        [HttpPut]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try

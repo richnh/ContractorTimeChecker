@@ -40,7 +40,7 @@ namespace ContractorTimeChecker.Controllers
             {
                 // TODO: Add insert logic here
 
-                List<TimeSheetEntryModel> models = context.Timesheets.Where(x => x.Date >= model.PlacementStartDate).Where(x => x.Date <= model.PlacementEndDate).ToList();
+                List<TimeSheetEntryModelBase> models = context.Timesheets.Where(x => x.Date >= model.PlacementStartDate).Where(x => x.Date <= model.PlacementEndDate).ToList();
 
                 return RedirectToAction("Index");
             }
@@ -98,7 +98,7 @@ namespace ContractorTimeChecker.Controllers
         {
             IList<SelectListItem> list = new List<SelectListItem>();
 
-            List<TimeSheetEntryModel> timesheetEntries = context.Timesheets.ToList();
+            List<TimeSheetEntryModelBase> timesheetEntries = context.Timesheets.ToList();
 
             foreach(var entry in timesheetEntries)
             {

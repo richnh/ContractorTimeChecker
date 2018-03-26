@@ -6,7 +6,7 @@ namespace ContractorTimeChecker.DAL
 {
     public class TimesheetContext : DbContext
     {
-        public DbSet<TimeSheetEntryModel> Timesheets { get; set; }
+        public DbSet<TimeSheetEntryModelBase> Timesheets { get; set; }
 
         public TimesheetContext() : base("TimesheetContext")
         {
