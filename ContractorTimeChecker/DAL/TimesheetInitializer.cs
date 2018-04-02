@@ -12,9 +12,9 @@ namespace ContractorTimeChecker.DAL
         {
             base.Seed(context);
 
-            var timesheets = new List<TimeSheetEntryModelBase>();
+            var timesheets = new List<TimesheetEntryInfo>();
 
-            timesheets.Add(new TimeSheetEntryModelBase() { CandidateName = "Richard Hale", ClientName = "Adgistics", JobTitle = "C# Developer", Duration = 8.5 });
+            timesheets.Add(new TimesheetEntryInfo() { CandidateName = "Richard Hale", ClientName = "Adgistics", JobTitle = "C# Developer", Duration = 8.5 });
 
             timesheets.ForEach(t => context.Timesheets.Add(t));
             context.SaveChanges();

@@ -12,7 +12,6 @@ namespace ContractorTimeChecker.Controllers
     {
         private TimesheetContext context = new TimesheetContext();
 
-        // GET: TimeSheet
         public ActionResult Index()
         {
             TimesheetSummaryModel model = new TimesheetSummaryModel();
@@ -20,7 +19,11 @@ namespace ContractorTimeChecker.Controllers
             model.CandidateNamesVM = new Models.ViewModels.CandidateNameViewModel()
             {
                 CandidateNames = GetCandidateNames()
+            };
 
+            model.CandidateSummaryVM = new Models.ViewModels.TimesheetContractorSummaryVM()
+            {
+                ContractorSummary = GetCandidateSummary()
             };
 
             return View(model);
@@ -40,7 +43,7 @@ namespace ContractorTimeChecker.Controllers
             {
                 // TODO: Add insert logic here
 
-                List<TimeSheetEntryModelBase> models = context.Timesheets.Where(x => x.Date >= model.PlacementStartDate).Where(x => x.Date <= model.PlacementEndDate).ToList();
+                List<TimesheetEntryInfo> models = context.Timesheets.Where(x => x.Date >= model.PlacementStartDate).Where(x => x.Date <= model.PlacementEndDate).ToList();
 
                 return RedirectToAction("Index");
             }
@@ -98,12 +101,21 @@ namespace ContractorTimeChecker.Controllers
         {
             IList<SelectListItem> list = new List<SelectListItem>();
 
-            List<TimeSheetEntryModelBase> timesheetEntries = context.Timesheets.ToList();
+            List<TimesheetEntryInfo> timesheetEntries = context.Timesheets.ToList();
 
             foreach(var entry in timesheetEntries)
             {
                 list.Add( new SelectListItem() { Value = entry.Id.ToString(), Text = entry.CandidateName } );
             }
+
+            return list;
+        }
+
+        IEnumerable<TimesheetEntryInfo> GetCandidateSummary()
+        {
+            IList<TimesheetEntryInfo> list = new List<TimesheetEntryInfo>();
+
+            list = context.Timesheets.Where(x => x.CandidateName == "Richard Hale").ToList();
 
             return list;
         }

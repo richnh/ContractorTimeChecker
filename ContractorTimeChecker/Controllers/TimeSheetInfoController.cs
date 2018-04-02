@@ -8,14 +8,14 @@ using ContractorTimeChecker.DAL;
 namespace ContractorTimeChecker.Controllers
 {
     [Authorize]
-    public class TimeSheetEntryController : Controller
+    public class TimeSheetInfoController : Controller
     {
         private TimesheetContext context = new TimesheetContext();
 
         // GET: TimeSheetEntry
         public ActionResult Index()
         {
-            List<TimeSheetEntryModelBase> modelInfo = new List<TimeSheetEntryModelBase>();
+            List<TimesheetEntryInfo> modelInfo = new List<TimesheetEntryInfo>();
 
             return View(context.Timesheets.ToList());
         }

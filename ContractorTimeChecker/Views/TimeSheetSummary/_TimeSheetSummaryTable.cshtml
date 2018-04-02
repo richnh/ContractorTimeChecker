@@ -1,0 +1,53 @@
+﻿@model ContractorTimeChecker.Models.TimesheetSummaryModel
+
+<table class="table table-bordered table-striped">
+    <tr>
+        <th>
+            Candidate Name
+        </th>
+        <th>
+            Client Name
+        </th>
+        <th>
+            Job Title
+        </th>
+        <th>
+            Date
+        </th>
+        <th>
+            Duration
+        </th>
+        <th>
+            Placement Type
+        </th>
+    </tr>
+    @foreach (var item in @Model.CandidateSummaryVM.ContractorSummary)
+    {
+        <tr>
+            <td>
+                @Html.Encode(item.CandidateName)
+            </td>
+
+            <td>
+                @Html.Encode(item.ClientName)
+            </td>
+
+            <td>
+                @Html.Encode(item.JobTitle)
+            </td>
+
+            <td>
+                @Html.Encode(item.Date)
+            </td>
+
+            <td>
+                @Html.Encode(item.Duration)
+            </td>
+
+            <td>
+                @if (item.PlacementType != null)
+                {@Html.Encode((ContractorTimeChecker.Models.Enums.PlacementTypeEnum)item.PlacementType)}
+            </td>
+        </tr>
+    }
+</table> 

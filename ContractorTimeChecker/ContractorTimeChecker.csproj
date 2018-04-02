@@ -174,6 +174,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TimeSheetInfoController.cs" />
     <Compile Include="Controllers\TimeSheetEntryController.cs" />
     <Compile Include="Controllers\TimeSheetSummaryController.cs" />
     <Compile Include="DAL\TimesheetContext.cs" />
@@ -185,6 +186,8 @@
     <Compile Include="Models\Enums\PlacementType.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\TimesheetEntryInfo.cs" />
+    <Compile Include="Models\ViewModels\TimesheetContractorSummaryModelVM.cs" />
     <Compile Include="Models\TimesheetSummaryModel.cs" />
     <Compile Include="Models\TimesheetEntryModelBase.cs" />
     <Compile Include="Models\ViewModels\CandidateNameViewModel.cs" />
@@ -253,6 +256,9 @@
     <Content Include="Views\TimeSheetSummary\Create.cshtml" />
     <Content Include="Views\TimeSheetEntry\Index.cshtml" />
     <Content Include="Views\TimeSheetEntry\Create.cshtml" />
+    <Content Include="Views\TimeSheetInfo\Index.cshtml" />
+    <Content Include="Views\Shared\_ContractorSummary.cshtml" />
+    <Content Include="Views\TimeSheetSummary\_TimeSheetSummaryTable.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -15,5 +15,7 @@ namespace ContractorTimeChecker.Models
         public DateTime PlacementEndDate{ get; set; }
 
         public CandidateNameViewModel CandidateNamesVM { get; set; }
+
+        public TimesheetContractorSummaryVM CandidateSummaryVM { get; set; }
     }
 }
