@@ -17,5 +17,6 @@ namespace ContractorTimeChecker.Models
         public CandidateNameViewModel CandidateNamesVM { get; set; }
 
         public TimesheetContractorSummaryVM CandidateSummaryVM { get; set; }
+
     }
 }

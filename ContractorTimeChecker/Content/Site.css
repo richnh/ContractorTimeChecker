@@ -29,3 +29,7 @@ textarea {
 	background-color: #f1f1f1;
 	height: 100%;
 }
+
+#summary_label {
+    font: normal 40px courier !important;
+}

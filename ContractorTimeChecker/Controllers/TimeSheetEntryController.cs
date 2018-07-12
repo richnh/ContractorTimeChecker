@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web.Mvc;
 using ContractorTimeChecker.Models;
 using ContractorTimeChecker.DAL;
+using ContractorTimeChecker.Services;
 
 namespace ContractorTimeChecker.Controllers
 {
@@ -11,6 +12,13 @@ namespace ContractorTimeChecker.Controllers
     public class TimeSheetEntryController : Controller
     {
         private TimesheetContext context = new TimesheetContext();
+
+        private ITimeSheetEntryService service;
+
+        public TimeSheetEntryController(ITimeSheetEntryService service )
+        {
+            this.service = service;
+        }
 
         // GET: TimeSheetEntry
         public ActionResult Index()
