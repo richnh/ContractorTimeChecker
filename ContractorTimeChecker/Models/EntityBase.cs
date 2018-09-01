@@ -1,14 +1,12 @@
 ﻿using System;
-using ContractorTimeChecker.Models.Enums;
 
 namespace ContractorTimeChecker.Models
 {
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("TimeSheetEntryBase")]   
-    public partial class TimeSheetEntryModelBase
+    public class EntityBase
     {
-        public int Id { get; set; }
+        public int Id { get; protected set; }
 
         public string CandidateName { get; set; }
 
@@ -16,10 +14,10 @@ namespace ContractorTimeChecker.Models
 
         public string JobTitle { get; set; }
 
-        public double ? Duration { get; set; }
+        public double? Duration { get; set; }
 
         public DateTime Date { get; set; }
 
-        public int ? PlacementType { get; set; }
+        public int? PlacementType { get; set; }
     }
 }

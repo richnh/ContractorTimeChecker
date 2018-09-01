@@ -9,6 +9,7 @@ namespace ContractorTimeChecker.Config
     // StructureMap ContollerFactory
     public class StructureMapControllerFactory : DefaultControllerFactory
     {
+
     }
 
 }

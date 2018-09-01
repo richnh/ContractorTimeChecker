@@ -1,4 +1,4 @@
-﻿@model ContractorTimeChecker.Models.TimesheetEntryInfo
+﻿@model List<ContractorTimeChecker.Models.TimesheetSummary>
 
 <div class="form-group">
     <div class="col-md-10">
@@ -10,7 +10,7 @@
                 </div>
             </div>
             <div class="col-xs-3">
-                @Html.Label(Html.Encode(@Model.CandidateName) )
+                @Html.Label(Html.Encode(@Model.FirstOrDefault().CandidateName) )
             </div>
         </div>
     </div>
@@ -18,9 +18,6 @@
 
 <table class="table table-bordered table-striped">
     <tr>
-        <th>
-            Candidate Name
-        </th>
         <th>
             Client Name
         </th>
@@ -37,13 +34,9 @@
             Placement Type
         </th>
     </tr>
-    @foreach (var item in @Model.CandidateSummaryVM.ContractorSummary)
+    @foreach (var item in @Model)
     {
         <tr>
-            <td>
-                @Html.Encode(item.CandidateName)
-            </td>
-
             <td>
                 @Html.Encode(item.ClientName)
             </td>

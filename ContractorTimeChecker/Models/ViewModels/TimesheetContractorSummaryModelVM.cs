@@ -4,8 +4,8 @@ using ContractorTimeChecker.Models.ViewModels;
 
 namespace ContractorTimeChecker.Models.ViewModels
 {
-    public class TimesheetContractorSummaryVM : TimeSheetEntryModelBase
+    public class TimesheetContractorSummaryVM : EntityBase
     {
-        public IEnumerable<TimesheetEntryInfo> ContractorSummary { get; set; }
+        public IEnumerable<TimesheetSummary> ContractorSummary { get; set; }
     }
 }

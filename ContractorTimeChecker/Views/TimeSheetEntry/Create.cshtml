@@ -14,6 +14,45 @@
 </div>
 
 <div class="row">
+    <!-- Trigger/Open The Modal -->
+    <button id="myBtn" class="btn btn-primary" data-toggle="tooltip" title="Add a new entry">Add Entry</button>
+
+    <form id="target">
+
+        <!-- The Modal -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <span class="close">&times;</span>
+                    <h2>Modal Header</h2>
+                    <div id="successMsg" class="alert alert-success">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
+                            ×
+                        </button>
+                        <span class="glyphicon glyphicon-ok"></span> <strong>Success Message</strong>
+                    </div>
+                    <div id="errorMsg" class="alert alert-danger hidden">
+                        <strong>Failure!</strong>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <label for="candidateName" class="timesheetentry-labels">Candidiate Name</label>
+                    <input type="text" id="candidateName" name="candidateName" class="timesheetentry-inputs"><br>
+                    <label for="clientName" class="timesheetentry-labels">Client Name</label>
+                    <input type="text" id="clientName" name="clientName" class="timesheetentry-inputs"><br>
+                    <input type="button" id="submitBtn" value="Submit" class="form-control btn-info">
+                </div>
+                <div class="modal-footer">
+                    <h3>Modal Footer</h3>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<div class="row">
     <div class="col-md-4">
         @using (Html.BeginForm("Create", "TimeSheetEntry", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
@@ -75,3 +114,71 @@
     </div>
 
 </div>
+
+<script>
+    // Get the modal
+    var modal = document.getElementById('myModal');
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on the button, open the modal 
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    //$(document).ready(function () {
+    //    $('[data-toggle="tooltip"]').tooltip();
+    //});
+
+    var submitBtn = document.getElementById('submitBtn');
+
+    var successMsg = document.getElementById('successMsg');
+
+    document.getElementById('successMsg').style.visibility = "hidden";
+    document.getElementById('successMsg').classList.add('hidden');
+
+    var failBtn = document.getElementById('failBtn');
+
+    submitBtn.onclick = function () {
+        var timesheetEntry = {
+            CandidateName: $('#candidateName').val(),
+            ClientName: $('#clientName').val()
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "http://localhost:50325/TimeSheetEntry/Create",
+            dataType: "json",
+            data: timesheetEntry,
+            success: function (msg) {
+                document.getElementById('successMsg').classList.remove('hidden');
+                document.getElementById('successMsg').style.visibility = "visible";
+
+                $("#successMsg").fadeTo(2000, 500).slideUp(500, function () {
+                    $("#successMsgt").slideUp(500);
+                });
+            },
+            fail: function (msg) {
+                $('failBtn').addClass('show');
+            }
+        });
+    };
+
+     
+</script>

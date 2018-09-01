@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ContractorTimeChecker.Models.TimeSheetEntryModelBase>
+﻿@model IEnumerable<ContractorTimeChecker.Repository.EntityTimesheet>
 
 @{
     ViewBag.Title = "TimeSheet Information";
@@ -43,7 +43,7 @@
                     @Html.Encode(item.ClientName)
                 </td>
 
-                <td>
+                @*<td>
                     @Html.Encode(item.JobTitle)
                 </td>
 
@@ -53,11 +53,11 @@
 
                 <td>
                     @Html.Encode(item.Duration)
-                </td>
+                </td>*@
 
-                <td>
+                @*<td>
                     @if(item.PlacementType != null) { @Html.Encode((ContractorTimeChecker.Models.Enums.PlacementTypeEnum)item.PlacementType) }            
-                </td>
+                </td>*@
             </tr>
         }        
 </table> 

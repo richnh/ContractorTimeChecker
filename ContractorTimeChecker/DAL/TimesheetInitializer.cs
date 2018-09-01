@@ -6,18 +6,18 @@ using ContractorTimeChecker.Models;
 
 namespace ContractorTimeChecker.DAL
 {
-    public class TimesheetInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<TimesheetContext>
+    public class TimesheetInitializer : System.Data.Entity. DropCreateDatabaseIfModelChanges<ApplicationContext>
     {
-        protected override void Seed(TimesheetContext context)
+        protected override void Seed(ApplicationContext context)
         {
-            base.Seed(context);
+            //base.Seed(context);
 
-            var timesheets = new List<TimesheetEntryInfo>();
+            //var timesheets = new List<TimesheetSummary>();
 
-            timesheets.Add(new TimesheetEntryInfo() { CandidateName = "Richard Hale", ClientName = "Adgistics", JobTitle = "C# Developer", Duration = 8.5 });
+            //timesheets.Add(new TimesheetSummary() { CandidateName = "Richard Hale", ClientName = "Adgistics", JobTitle = "C# Developer", Duration = 8.5 });
 
-            timesheets.ForEach(t => context.Timesheets.Add(t));
-            context.SaveChanges();
+            //timesheets.ForEach(t => context.Timesheets.Add(t));
+            //context.SaveChanges();
         }
     }
 }

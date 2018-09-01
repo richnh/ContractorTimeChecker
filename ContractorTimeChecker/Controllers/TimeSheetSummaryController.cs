@@ -1,68 +1,62 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using ContractorTimeChecker.Models;
 using ContractorTimeChecker.DAL;
-using System.Collections.Generic;
-using System.Linq;
-using ContractorTimeChecker.Services;
+using ContractorTimeChecker.Repository;
+using System;
 
 namespace ContractorTimeChecker.Controllers
 {
     [Authorize]
     public class TimeSheetSummaryController : Controller
     {
-        private TimesheetContext context = new TimesheetContext();
+        private ApplicationContext context = new ApplicationContext();
 
-        ITimeSheetSummaryService service;
+        private IRepository repository;
 
-        public TimeSheetSummaryController()
+        public TimeSheetSummaryController(IRepository repository)
         {
-            service = new TimeCheckerService();
-        }
-
-        public TimeSheetSummaryController(ITimeSheetSummaryService service)
-        {
-            this.service = service;
+            this.repository = repository;
         }
 
         public ActionResult Index()
         {
             TimesheetSummaryModel model = new TimesheetSummaryModel();
 
-            TimeCheckerService service = new TimeCheckerService(context);
-
             model.CandidateNamesVM = new Models.ViewModels.CandidateNameViewModel()
             {
-                CandidateNames = service.GetCandidateNames()
+                //CandidateNames = repository.GetCandidateNames()
             };
 
             model.CandidateSummaryVM = new Models.ViewModels.TimesheetContractorSummaryVM()
             {
-                ContractorSummary = service.GetCandidateSummary(string.Empty)
+                //ContractorSummary = repository.GetCandidateSummary(string.Empty)
             };
 
             return View(model);
         }
 
-        [HttpPost]
-        public ActionResult Create(TimesheetSummaryModel model)
-        {
-            try
-            {
-                // TODO: Add insert logic here
+        /// <summary>
+        /// Creates a new summary object to be displayed using the model
+        /// parameters parsed in
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
+        //[HttpPost]
+        //public ActionResult Create(TimesheetSummaryModel model)
+        //{
+        //    try
+        //    {
+        //        model.CandidateNamesVM = new Models.ViewModels.CandidateNameViewModel()
+        //        {
+        //            //CandidateNames = repository.GetCandidateNames()
+        //        };
 
-                List<TimesheetEntryInfo> models = context.Timesheets.Where(x => x.Date >= model.PlacementStartDate).Where(x => x.Date <= model.PlacementEndDate).ToList();
-
-                //List<TimesheetSummaryModel> summaryModels = new List<TimesheetSummaryModel>();
-
-               
-
-                return View("Summary", models);
-            }
-            catch
-            {
-                return View();
-            }
-        }
+        //        return View("Summary", repository.GetCandidateEmploymentSummary(model));
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        return View();
+        //    }
+        //}
     }
 }

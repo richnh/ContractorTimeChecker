@@ -11,6 +11,7 @@ namespace ContractorTimeChecker.Models.ViewModels
     {
         [Display(Name = "User Role")]
         public int SelectedCandidateNameId { get; set; }
+
         public IEnumerable<SelectListItem> CandidateNames { get; set; }
     }
 }

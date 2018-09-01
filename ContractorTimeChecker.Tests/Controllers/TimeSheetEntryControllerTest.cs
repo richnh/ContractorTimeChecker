@@ -9,12 +9,12 @@ namespace ContractorTimeChecker.Tests.Controllers
     [TestClass]
     public class TimeSheetEntryControllerTest
     {
-        TimesheetContext mockContext;
+        ApplicationContext mockContext;
 
         [TestInitialize]
         public void Setup()
         {
-            mockContext = MockRepository.GenerateMock<TimesheetContext>();
+            mockContext = MockRepository.GenerateMock<ApplicationContext>();
         }
 
         [TestMethod]

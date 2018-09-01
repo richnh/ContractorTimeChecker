@@ -16,11 +16,17 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 namespace ContractorTimeChecker.DependencyResolution {
-    using StructureMap.Configuration.DSL;
-    using StructureMap.Graph;
     using StructureMap;
     using ContractorTimeChecker.Services;
-	
+    using ContractorTimeChecker.Models;
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
+    using System.Data.Entity;
+    using System.Web;
+    using Microsoft.Owin.Security;
+    using ContractorTimeChecker.Repository;
+
+
     public class DefaultRegistry : Registry {
         #region Constructors and Destructors
 
@@ -31,9 +37,19 @@ namespace ContractorTimeChecker.DependencyResolution {
                     scan.WithDefaultConventions();
 					scan.With(new ControllerConvention());
                 });
-            For<ITimeSheetSummaryService>().Use<TimeCheckerService>();
+
+            For<ITimeCheckerService>().Use<TimeCheckerService>();
 
             For<ITimeSheetEntryService>().Use<TimeSheetEntryService>();
+
+            For<IUserStore<ApplicationUser>>().Use<UserStore<ApplicationUser>>();
+
+            For<DbContext>().Use(() => new ApplicationDbContext());
+
+            For<IAuthenticationManager>().Use(() => HttpContext.Current.GetOwinContext().Authentication);
+
+            For<IRepository>().Use<RepositoryTimesheetEntry>();
+
         }
 
         #endregion

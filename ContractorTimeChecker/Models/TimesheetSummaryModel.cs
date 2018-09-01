@@ -4,12 +4,9 @@ using ContractorTimeChecker.Models.ViewModels;
 
 namespace ContractorTimeChecker.Models
 {
-    public class TimesheetSummaryModel : TimeSheetEntryModelBase
+    public class TimesheetSummaryModel : EntityBase
     {
-        public IEnumerable<string> CandidateNames { get; set; }
-
-        public IEnumerable<string> ClientNames { get; set; }
-
+       
         public DateTime PlacementStartDate { get; set; }
 
         public DateTime PlacementEndDate{ get; set; }
@@ -18,5 +15,6 @@ namespace ContractorTimeChecker.Models
 
         public TimesheetContractorSummaryVM CandidateSummaryVM { get; set; }
 
+        public int CandidateNameIndex { get; set; }
     }
 }

@@ -31,7 +31,7 @@ namespace ContractorTimeChecker.Tests.DependencyResolution {
                     scan.WithDefaultConventions();
 					scan.With(new ControllerConvention());
                 });
-            For<ITimeSheetSummaryService>().Use<TimeCheckerService>();
+            For<ITimeCheckerService>().Use<TimeCheckerService>();
 
             
 

@@ -15,11 +15,9 @@
 // </copyright>
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ContractorTimeChecker.DependencyResolution {
-    using System;
+namespace ContractorTimeChecker.DependencyResolution
+{
     using System.Web.Mvc;
-
-    using StructureMap.Configuration.DSL;
     using StructureMap.Graph;
     using StructureMap.Pipeline;
     using StructureMap.TypeRules;

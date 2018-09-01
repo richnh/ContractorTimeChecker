@@ -4,28 +4,26 @@ using System.Linq;
 using System.Web.Mvc;
 using ContractorTimeChecker.Models;
 using ContractorTimeChecker.DAL;
-using ContractorTimeChecker.Services;
+using ContractorTimeChecker.Repository;
 
 namespace ContractorTimeChecker.Controllers
 {
     [Authorize]
     public class TimeSheetEntryController : Controller
     {
-        private TimesheetContext context = new TimesheetContext();
+        private IRepository repository;
 
-        private ITimeSheetEntryService service;
-
-        public TimeSheetEntryController(ITimeSheetEntryService service )
+        public TimeSheetEntryController(IRepository repository )
         {
-            this.service = service;
+            this.repository = repository;
         }
 
         // GET: TimeSheetEntry
         public ActionResult Index()
         {
-            List<TimeSheetEntryModelBase> modelInfo = new List<TimeSheetEntryModelBase>();
+            List<EntityBase> modelInfo = new List<EntityBase>();
 
-            return View(context.Timesheets.ToList());
+            return View(repository.GetAll().ToList());
         }
 
         // GET: TimeSheetEntry/Details/5
@@ -41,20 +39,12 @@ namespace ContractorTimeChecker.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(TimesheetEntryInfo model)
+        public JsonResult Create(EntityTimesheet model)
         {
-            try
-            {
-                context.Timesheets.Add(model);
+            repository.Create(model);
 
-                context.SaveChanges();
-
-                return RedirectToAction("Index");
-            }
-            catch(Exception ex)
-            {
-                return View();
-            }
+            var result = new { Success = "True", Message = "No Error" };
+            return Json(result, JsonRequestBehavior.AllowGet);     
         }
 
         [HttpPut]

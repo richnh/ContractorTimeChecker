@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 
 namespace ContractorTimeChecker.Services
 {
-    public interface ITimeSheetSummaryService
+    public interface ITimeCheckerService
     {
+        IEnumerable<SelectListItem> GetCandidateNames();
     }
 }

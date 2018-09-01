@@ -14,14 +14,14 @@ namespace ContractorTimeChecker.Tests.Controllers
     [TestClass]
     public class TimeSheetSummaryControllerTests
     {
-        TimesheetContext mockedContext;
+        ApplicationContext mockedContext;
 
         TimeCheckerService mockedService;
 
         [TestInitialize]
         public void Setup()
         {
-            mockedContext = MockRepository.GenerateMock<TimesheetContext>();
+            mockedContext = MockRepository.GenerateMock<ApplicationContext>();
 
             mockedService = MockRepository.GenerateMock<TimeCheckerService>();
         }

@@ -9,9 +9,9 @@ using ContractorTimeChecker.Services;
 
 namespace ContractorTimeChecker.Services
 {
-    public class TimeCheckerService : ITimeSheetSummaryService
+    public class TimeCheckerService : ITimeCheckerService
     {
-        private TimesheetContext context;
+        private ApplicationContext context;
 
         public TimeCheckerService()
         {
@@ -21,7 +21,7 @@ namespace ContractorTimeChecker.Services
         /// <summary>
         /// 
         /// </summary>
-        public TimeCheckerService(TimesheetContext context)
+        public TimeCheckerService(ApplicationContext context)
         {
             this.context = context;
         }
@@ -38,18 +38,6 @@ namespace ContractorTimeChecker.Services
             {
                 list.Add(new SelectListItem() { Value = entry.Id.ToString(), Text = entry.CandidateName });
             }
-
-            return list;
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="candidateName"></param>
-        /// <returns></returns>
-        public IEnumerable<TimesheetEntryInfo> GetCandidateSummary(string candidateName)
-        {
-            var list = context.Timesheets.Where(x => x.CandidateName == candidateName).ToList();
 
             return list;
         }

@@ -13,14 +13,14 @@ namespace ContractorTimeChecker.Tests.Services
     [TestClass]
     class TimeCheckerServiceTests
     {
-        private TimesheetContext mockContext;
+        private ApplicationContext mockContext;
 
-        private ITimeSheetSummaryService service;
+        private ITimeCheckerService service;
 
         [TestInitialize]
         public void Setup()
         {
-            mockContext = MockRepository.GenerateMock<TimesheetContext>();
+            mockContext = MockRepository.GenerateMock<ApplicationContext>();
         }
 
         [TestMethod]

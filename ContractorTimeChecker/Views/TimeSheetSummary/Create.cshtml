@@ -1,9 +1,12 @@
-﻿@{
+﻿@model List<ContractorTimeChecker.Models.TimesheetSummary>
+
+
+@{
     ViewBag.Title = "Home Page";
 }
 
 <div class="jumbotron">
     <h1>Contractor Time Checker - Summary</h1>
-   
+    @Html.Partial("_TimeSheetSummaryTable", Model)
 </div>
 

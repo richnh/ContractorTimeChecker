@@ -10,12 +10,12 @@ namespace ContractorTimeChecker.Controllers
     [Authorize]
     public class TimeSheetInfoController : Controller
     {
-        private TimesheetContext context = new TimesheetContext();
+        private ApplicationContext context = new ApplicationContext();
 
         // GET: TimeSheetEntry
         public ActionResult Index()
         {
-            List<TimesheetEntryInfo> modelInfo = new List<TimesheetEntryInfo>();
+            List<TimesheetSummary> modelInfo = new List<TimesheetSummary>();
 
             return View(context.Timesheets.ToList());
         }
@@ -33,7 +33,7 @@ namespace ContractorTimeChecker.Controllers
         }
 
         [HttpPost]
-        public ActionResult Create(TimesheetEntryInfo model)
+        public ActionResult Create(TimesheetSummary model)
         {
             try
             {
