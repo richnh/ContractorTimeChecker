@@ -15,41 +15,43 @@
 
 <div class="row">
     <!-- Trigger/Open The Modal -->
-    <button id="myBtn" class="btn btn-primary" data-toggle="tooltip" title="Add a new entry">Add Entry</button>
+    <button id="addEntryBtn" class="btn btn-primary" data-toggle="tooltip" title="Add a new entry">Add Entry</button>
 
-    <form id="target">
-
-        <!-- The Modal -->
-        <div id="myModal" class="modal">
+        <!-- The Add Entry Modal -->
+        <div id="addEntryModal" class="modal">
             <!-- Modal content -->
             <div class="modal-content">
                 <div class="modal-header">
                     <span class="close">&times;</span>
-                    <h2>Modal Header</h2>
+                    <h3>Add Timesheet Entry</h3>
+                </div>
+                <div class="modal-body">
+                    <label for="candidateName" class="timesheetentry-labels">Candidate Name</label>
+                    <input type="text" id="candidateName" name="candidateName" class="timesheetentry-inputs"><br>
+                    <label for="clientName" class="timesheetentry-labels">Client Name</label>
+                    <input type="text" id="clientName" name="clientName" class="timesheetentry-inputs"><br>
+                    <label for="jobTitle" class="timesheetentry-labels">Job Title</label>
+                    <input type="text" id="jobTitle" name="jobTitle" class="timesheetentry-inputs"><br>
+                    <label for="duration" class="timesheetentry-labels">Duration</label>
+                    <input type="text" id="duration" name="duration" class="timesheetentry-inputs"><br>
+                    <label for="date" class="timesheetentry-labels">Date</label>
+                    <input type="datetime" id="date" name="date" class="timesheetentry-inputs"><br>
+
+                    <input type="button" id="submitBtn" value="Submit" class="form-control btn-info timesheet-entry-submit">
+
                     <div id="successMsg" class="alert alert-success">
-                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">
-                            ×
-                        </button>
-                        <span class="glyphicon glyphicon-ok"></span> <strong>Success Message</strong>
+                        <span class="glyphicon glyphicon-ok"></span> <strong>Success!!</strong>
                     </div>
                     <div id="errorMsg" class="alert alert-danger hidden">
                         <strong>Failure!</strong>
                     </div>
                 </div>
-                <div class="modal-body">
-                    <label for="candidateName" class="timesheetentry-labels">Candidiate Name</label>
-                    <input type="text" id="candidateName" name="candidateName" class="timesheetentry-inputs"><br>
-                    <label for="clientName" class="timesheetentry-labels">Client Name</label>
-                    <input type="text" id="clientName" name="clientName" class="timesheetentry-inputs"><br>
-                    <input type="button" id="submitBtn" value="Submit" class="form-control btn-info">
-                </div>
                 <div class="modal-footer">
-                    <h3>Modal Footer</h3>
+                    <h5>&#169 HSC 2018</h5>
                 </div>
             </div>
 
         </div>
-    </form>
 </div>
 
 <div class="row">
@@ -117,10 +119,10 @@
 
 <script>
     // Get the modal
-    var modal = document.getElementById('myModal');
+    var modal = document.getElementById('addEntryModal');
 
     // Get the button that opens the modal
-    var btn = document.getElementById("myBtn");
+    var btn = document.getElementById("addEntryBtn");
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
@@ -158,7 +160,10 @@
     submitBtn.onclick = function () {
         var timesheetEntry = {
             CandidateName: $('#candidateName').val(),
-            ClientName: $('#clientName').val()
+            ClientName: $('#clientName').val(),
+            JobTitle: $('#jobTitle').val(),
+            Duration: $('#duration').val(),
+            Date: $('#date').val()
         };
 
         $.ajax({

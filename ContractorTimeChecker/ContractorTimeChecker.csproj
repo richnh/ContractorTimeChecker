@@ -219,6 +219,10 @@
     <Compile Include="Migrations\201808311855492_AddEntityTimesheetModel.Designer.cs">
       <DependentUpon>201808311855492_AddEntityTimesheetModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809021049038_UpdateTimesheetEntryModel.cs" />
+    <Compile Include="Migrations\201809021049038_UpdateTimesheetEntryModel.Designer.cs">
+      <DependentUpon>201809021049038_UpdateTimesheetEntryModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Enums\PlacementType.cs" />
@@ -242,7 +246,10 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\addEntry.png" />
+    <Content Include="Content\Images\clock-icon.png" />
     <Content Include="Content\Images\clock.jpg" />
+    <Content Include="Content\Images\view-entries-icon.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -335,6 +342,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808311855492_AddEntityTimesheetModel.resx">
       <DependentUpon>201808311855492_AddEntityTimesheetModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809021049038_UpdateTimesheetEntryModel.resx">
+      <DependentUpon>201809021049038_UpdateTimesheetEntryModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
