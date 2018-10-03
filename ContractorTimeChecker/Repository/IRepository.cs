@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ContractorTimeChecker.Models.Repository;
 
 namespace ContractorTimeChecker.Repository
 {
@@ -12,7 +10,7 @@ namespace ContractorTimeChecker.Repository
 
         IEnumerable<EntityTimesheet> GetAll();
 
-        void Create(EntityTimesheet entity);
+        RepositoryReponseBaseModel Create(EntityTimesheet entity);
 
         void Delete(EntityTimesheet entity);
 

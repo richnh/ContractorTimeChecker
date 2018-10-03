@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using ContractorTimeChecker.DAL;
 using System.Linq;
+using ContractorTimeChecker.Models.Repository;
+using System.Text;
 
 namespace ContractorTimeChecker.Repository
 {
@@ -24,10 +26,29 @@ namespace ContractorTimeChecker.Repository
             return context.TimesheetEntries.ToList();
         }
 
-        public void Create(EntityTimesheet entity)
+        public RepositoryReponseBaseModel Create(EntityTimesheet entity)
         {
-            context.TimesheetEntries.Add(entity);
-            context.SaveChanges();
+            bool state = false;
+
+            StringBuilder sb = new StringBuilder();
+            
+            try
+            {
+                context.TimesheetEntries.Add(entity);
+                context.SaveChanges();
+
+                state = true;
+
+                sb.Append("Created Successfully");
+            }
+            catch(Exception ex)
+            {
+                state = false;
+
+                sb.Append(ex.Message);
+            }
+
+            return new RepositoryReponseBaseModel(state, sb.ToString());
         }
 
         public void Delete(EntityTimesheet entity)
