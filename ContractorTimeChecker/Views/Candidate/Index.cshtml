@@ -1,38 +1,32 @@
 ﻿
 @{
-    ViewBag.Title = "TimeSheet Entry";
+    ViewBag.Title = "Add Candidate";
 }
 
 <div class="row">
-    <h2>Add TimeSheet Entry</h2>
+    <h2>Add Candidate</h2>
     <div class="panel panel-default">
         <div class="panel-body">
             <!-- Trigger/Open The Modal -->
-            <button id="addEntryBtn" class="btn btn-primary" title="Add a new entry">Add Entry</button>
+            <button id="addCandidateBtn" class="btn btn-primary" title="Add a new candidate">Add Entry</button>
         </div>
     </div>
 </div>
 
 <div class="row">
     <!-- The Add Entry Modal -->
-    <div id="addEntryModal" class="modal">
+    <div id="addCandidateModal" class="modal">
         <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-header">
                 <span class="close">&times;</span>
-                <h3>Add Timesheet Entry</h3>
+                <h3>Add Candidate Entry</h3>
             </div>
             <div class="modal-body">
                 <label for="candidateName" class="timesheetentry-labels">Candidate Name</label>
                 <input type="text" id="candidateName" name="candidateName" class="timesheetentry-inputs"><br>
                 <label for="clientName" class="timesheetentry-labels">Client Name</label>
                 <input type="text" id="clientName" name="clientName" class="timesheetentry-inputs"><br>
-                <label for="jobTitle" class="timesheetentry-labels">Job Title</label>
-                <input type="text" id="jobTitle" name="jobTitle" class="timesheetentry-inputs"><br>
-                <label for="duration" class="timesheetentry-labels">Duration</label>
-                <input type="text" id="duration" name="duration" class="timesheetentry-inputs"><br>
-                <label for="date" class="timesheetentry-labels">Date</label>
-                <input type="datetime" id="date" name="date" class="timesheetentry-inputs"><br>
 
                 <input type="button" id="submitBtn" value="Submit" class="form-control btn-info timesheet-entry-submit">
 
@@ -52,15 +46,15 @@
 
 <script>
     // Get the modal
-    var modal = document.getElementById('addEntryModal');
+    var modal = document.getElementById('addCandidateModal');
 
     // Get the button that opens the modal
-    var btn = document.getElementById("addEntryBtn");
+    var btn = document.getElementById("addCandidateBtn");
 
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks on the button, open the modal 
+    // When the user clicks on the button, open the modal
     btn.onclick = function () {
         modal.style.display = "block";
     }
@@ -90,14 +84,12 @@
         var timesheetEntry = {
             CandidateName: $('#candidateName').val(),
             ClientName: $('#clientName').val(),
-            JobTitle: $('#jobTitle').val(),
-            Duration: $('#duration').val(),
-            Date: $('#date').val()
+
         };
 
         $.ajax({
             type: "POST",
-            url: "http://localhost:50325/TimeSheetEntry/Create",
+            url: "http://localhost:50325/Candidate/Create",
             dataType: "json",
             data: timesheetEntry,
             success: function (msg) {
@@ -114,5 +106,5 @@
         });
     };
 
-     
+
 </script>

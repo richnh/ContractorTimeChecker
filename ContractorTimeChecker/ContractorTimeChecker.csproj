@@ -187,6 +187,7 @@
     <Compile Include="App_Start\StructuremapMvc.cs" />
     <Compile Include="Config\Bootstrapper.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CandidateController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\TimeSheetInfoController.cs" />
@@ -1123,6 +1124,8 @@
     <Content Include="Views\TimeSheetSummary\Summary.cshtml" />
     <Content Include="Scripts\version.json" />
     <Content Include="tsconfig.json" />
+    <Content Include="Views\Candidate\Create.cshtml" />
+    <Content Include="Views\Candidate\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

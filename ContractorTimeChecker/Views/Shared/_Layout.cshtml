@@ -34,16 +34,23 @@
                 </ul> 
             </div>
 			<div class="navbar-collapse collapse">
-				<ul id="services-list" class="nav navbar-nav">
+                <ul id="services-list" class="nav navbar-nav">
                     <li>
                         <a class="image">
                             <img src="~/Content/Images/view-entries-icon.png" alt="View Entries" />
                         </a>@Html.ActionLink("   ", "Index", "TimeSheetEntry")
                     </li>
-					<li><a class="image">
-                    <img src="~/Content/Images/addEntry.png" alt="Add Icon" />
-                    </a>@Html.ActionLink("   ", "Create", "TimeSheetEntry")</li>
-				</ul>
+                    <li>
+                        <a class="image">
+                            <img src="~/Content/Images/addEntry.png" alt="Add Icon" />
+                        </a>@Html.ActionLink("   ", "Create", "TimeSheetEntry")
+                    </li>
+                    <li>
+                        <a class="image">
+                            <img src="~/Content/Images/addEntry.png" alt="Add Icon" />
+                        </a>@Html.ActionLink("   ", "Index", "Candidate")
+                    </li>
+                </ul>
 				@Html.Partial("_LoginPartial")
 			</div>
 		</div>

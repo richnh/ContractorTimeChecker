@@ -2,7 +2,7 @@
 
 namespace ContractorTimeChecker.Repository
 {
-    public abstract class EntityBase
+    public class EntityBase
     {
         public int Id { get; protected set; }
 

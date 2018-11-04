@@ -38,13 +38,17 @@ namespace ContractorTimeChecker.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="model"></param>
+        /// <returns></returns>
         [HttpPost]
         public JsonResult Create(EntityTimesheet model)
         {
-            repository.Create(model);
+            var response = repository.Create(model);
 
-            var result = new { Success = "True", Message = "No Error" };
-            return Json(result, JsonRequestBehavior.AllowGet);     
+            return Json(response, JsonRequestBehavior.AllowGet);     
         }
 
         [HttpPut]
