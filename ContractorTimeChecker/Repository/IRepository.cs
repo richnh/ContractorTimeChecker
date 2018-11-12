@@ -4,16 +4,16 @@ using ContractorTimeChecker.Models.Repository;
 
 namespace ContractorTimeChecker.Repository
 {
-    public interface IRepository : IDisposable
+    public interface IRepository<T> : IDisposable
     {
-        EntityTimesheet GetById(Int64 id);
+        T GetById(Int64 id);
 
-        IEnumerable<EntityTimesheet> GetAll();
+        IEnumerable<T> GetAll();
 
-        RepositoryReponseBaseModel Create(EntityTimesheet entity);
+        RepositoryReponseBaseModel Create(T entity);
 
-        void Delete(EntityTimesheet entity);
+        void Delete(T entity);
 
-        void Update(EntityTimesheet entity);
+        void Update(T entity);
     }
 }

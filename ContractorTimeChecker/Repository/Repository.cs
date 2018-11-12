@@ -7,7 +7,7 @@ using System.Text;
 
 namespace ContractorTimeChecker.Repository
 {
-    public class RepositoryTimesheetEntry : IRepository
+    public class RepositoryTimesheetEntry : IRepository<EntityTimesheet>
     {
         private ApplicationContext context;
 

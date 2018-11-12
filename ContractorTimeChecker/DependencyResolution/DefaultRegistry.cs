@@ -48,7 +48,9 @@ namespace ContractorTimeChecker.DependencyResolution {
 
             For<IAuthenticationManager>().Use(() => HttpContext.Current.GetOwinContext().Authentication);
 
-            For<IRepository>().Use<RepositoryTimesheetEntry>();
+            For<IRepository<EntityTimesheet>>().Use<RepositoryTimesheetEntry>();
+
+            For<IRepository<EntityBase>>().Use<CandidateRepository>();
 
         }
 

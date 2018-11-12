@@ -11,9 +11,9 @@ namespace ContractorTimeChecker.Controllers
     [Authorize]
     public class TimeSheetEntryController : Controller
     {
-        private IRepository repository;
+        private IRepository<EntityTimesheet> repository;
 
-        public TimeSheetEntryController(IRepository repository )
+        public TimeSheetEntryController(IRepository<EntityTimesheet> repository )
         {
             this.repository = repository;
         }

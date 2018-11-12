@@ -238,6 +238,7 @@
     <Compile Include="Repository\EntityTimesheetEntry.cs" />
     <Compile Include="Repository\EntityBase.cs" />
     <Compile Include="Repository\IRepository.cs" />
+    <Compile Include="Repository\CandidateRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Services\Helpers.cs" />
     <Compile Include="Services\ITimeSheetEntryService.cs" />
